@@ -1,2 +1,4 @@
-# jogo-da-velha
-Jogo da velha desenvolvido para o evento FIEC Portas Abertas. 
+# ❌ Jogo Da Velha ⭕
+
+Projeto desenvolvido para o evento Portas Abertas da FIEC.
+
