@@ -30,8 +30,23 @@ body {
     height: 100vh;
     padding-bottom: 50px;
 }
+button:hover{
+    scale: 104%;
+    background-color: pink;
+}
 button {
 padding: 10px 20px;
 cursor: pointer;
 font-size: 1rem;
+animation: identifier 1s linear infinite;    /* aqui o animation que usa com o keyframes */
+}
+
+
+ /* aqui é uma animação para deixar o botao pulsando, usa ela com o animation da button */
+@keyframes identifier {     
+    from, to {
+        scale: 100%;
+    } 50% {
+        scale: 106%;
+    }
 }
