@@ -3,13 +3,35 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f4f4f4;
+    background-color: #cccccc;
+    margin: 0;
+    flex-direction: column;
+    height: 100vh;
 }
+header {
+    position: absolute;
+    top: 0;     
+    left: 0;   
+    display: flex; 
+    align-items: flex-start;  
+    justify-content: flex-start;  
+    width: 100%;
+    height: 100px;
+    background-color: rgb(166, 133, 197);
+}
+
+.imagem {
+    margin-left: 15px; 
+    width: 50%;
+    height: auto;
+}
+
 #game {
     border: 3px solid rgb(130, 0, 156);
     display: grid;
     grid-template-columns: 103px 103px 103px;
     gap: 3px;
+    margin-top: 130px;
 }
 .quadrado{
     border: 2px solid rgb(167, 71, 154);
@@ -27,26 +49,50 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    height: 100vh;
+    height: 100px;
     padding-bottom: 50px;
+    
 }
+
+button {
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    animation: pulsar 1s linear infinite;    /* aqui o animation que usa com o keyframes */
+    border-radius: 50px;
+    background-color: maroon;
+    color: beige;   
+}
+
+#mensagem {
+    width: 700px;    
+    height: 25px;
+    animation: susto 1s linear infinite;
+    margin-top: 40px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.quadrado:hover{
+    background-color: rgba(167, 71, 154, 0.397);
+}
+
 button:hover{
     scale: 104%;
-    background-color: pink;
+    background-color: rgb(255, 14, 54);
 }
-button {
-padding: 10px 20px;
-cursor: pointer;
-font-size: 1rem;
-animation: identifier 1s linear infinite;    /* aqui o animation que usa com o keyframes */
-}
-
-
  /* aqui é uma animação para deixar o botao pulsando, usa ela com o animation da button */
-@keyframes identifier {     
+@keyframes pulsar {     
     from, to {
         scale: 100%;
     } 50% {
         scale: 106%;
     }
+}
+
+
+/* coloca foto no quadrado */
+.quadrado img {
+    max-width: 90%; /*largura maxima */ 
+    max-height: 90%; /* altura maxima */
 }
