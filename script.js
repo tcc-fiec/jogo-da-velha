@@ -1,43 +1,52 @@
-let jogadorAtual = "X";   //aqui é o jogador que vai começar
-const quadrados = document.querySelectorAll(".quadrado"); //pega todos os quadrados
-const mensagem = document.getElementById("mensagem");  
+let jogadorAtual = "X";   // Jogador inicial
+const quadrados = document.querySelectorAll(".quadrado");
+const mensagem = document.getElementById("mensagem");
+
+// URLs das imagens para os jogadores
+const imagemX = 'images/xis-com-azul.png';  // Imagem do X
+const imagemO = 'images/circulo.png';  // Imagem do O
 
 function clicarQuadrado(evento) {
     const quadrado = evento.target;
 
-    if (quadrado.textContent) {   
-        return;     
+    // Se o quadrado já tiver uma imagem, não faz nada
+    if (quadrado.querySelector("img")) {
+        return;
     }
 
-    quadrado.textContent = jogadorAtual;     // vai fzr aparecer o jogador atual qnd clicar no quadrado
+    // Adiciona a imagem correspondente ao jogador atual
+    const img = document.createElement("img");
+    img.src = jogadorAtual === "X" ? imagemX : imagemO; // Se for o jogador X, usa a imagemX, caso contrário usa imagemO
+    img.setAttribute("data-jogador", jogadorAtual);  // Atributo personalizado para identificar o jogador
+    quadrado.appendChild(img);
 
+    // Verifica se houve vitória
     if (checarVitoria()) return;
 
-    if (jogadorAtual === "X") {
-        jogadorAtual = "O";
-    } else {
-        jogadorAtual = "X";       //verifica que jogador é o atual
-    }
+    // Troca o jogador
+    jogadorAtual = jogadorAtual === "X" ? "O" : "X";
 }
 
 function checarVitoria() {
     const combinacoesVitoria = [
         [0, 1, 2], [3, 4, 5], [6, 7, 8],
-        [0, 3, 6], [1, 4, 7], [2, 5, 8],      // mostra as possibilidade de vitoria
+        [0, 3, 6], [1, 4, 7], [2, 5, 8],
         [0, 4, 8], [2, 4, 6]
     ];
 
     for (let combinacao of combinacoesVitoria) {
         const [a, b, c] = combinacao;
-        if (quadrados[a].textContent &&
-            quadrados[a].textContent === quadrados[b].textContent &&        // se A, B e C forem iguais alguem ganhou
-            quadrados[a].textContent === quadrados[c].textContent) {
-            mensagem.textContent = `${quadrados[a].textContent} venceu!`;
+        const imgA = quadrados[a].querySelector("img");
+        const imgB = quadrados[b].querySelector("img");
+        const imgC = quadrados[c].querySelector("img");
+
+        if (imgA && imgB && imgC && imgA.getAttribute("data-jogador") === imgB.getAttribute("data-jogador") && imgB.getAttribute("data-jogador") === imgC.getAttribute("data-jogador")) {
+            mensagem.textContent = `${imgA.getAttribute("data-jogador")} venceu!`;
             return true;
         }
     }
 
-    if (Array.from(quadrados).every(quadrado => quadrado.textContent !== "")) {
+    if (Array.from(quadrados).every(quadrado => quadrado.querySelector("img"))) {
         mensagem.textContent = "Empate!";
         return true;
     }
@@ -48,11 +57,12 @@ function checarVitoria() {
 const botaoReiniciar = document.getElementById("reiniciar");
 
 function reiniciarJogo() {
-    quadrados.forEach(quadrado => quadrado.textContent = "");
-    jogadorAtual = "X";
+    quadrados.forEach(quadrado => {
+        quadrado.innerHTML = '';  // Limpar as imagens
+    });
     mensagem.textContent = "";
+    jogadorAtual = "X";
 }
 
 quadrados.forEach(quadrado => quadrado.addEventListener("click", clicarQuadrado));
-
 botaoReiniciar.addEventListener("click", reiniciarJogo);
