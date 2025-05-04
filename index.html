@@ -7,8 +7,22 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div></div>
-    <div id="game">
+
+
+    <div class="efeitos-de-fundo"></div>
+
+    <header>
+        <div>
+            <img class="imagem" src="https://images.sympla.com.br/5e5813d492494-xs.png" alt="imagem legal">
+        </div>    
+        
+        <div>
+            <h1 class="titulo">Jogo da Velha</h1>
+        </div>
+        
+    </header>
+
+    <div id="game" class="game">
         <div class = "quadrado" data-index="0"></div>
         <div class = "quadrado" data-index="1"></div>
         <div class = "quadrado" data-index="2"></div>
@@ -19,13 +33,27 @@
         <div class = "quadrado" data-index="7"></div>
         <div class = "quadrado" data-index="8"></div>
     </div>
+
+  
+
+    <div id="resultado"></div> 
+    
+    <div class="placar">
+        <p>Vitórias X: <span id="contador-x">0</span></p>
+        <p>Vitórias O: <span id="contador-o">0</span></p>
+        <p>Empates: <span id="empates">0</span></p>
+    </div>
+
+    <div id="mensagem"></div>
     <div class = "botao">
         <button id="reiniciar">Reiniciar Jogo</button>
+        <button id="zerar-placar">Zerar Placar</button>
     </div>
-    <div id="resultado"></div>
-    <div id="mensagem"></div>
-    <script src = "script.js"></script>
 
+    <!-- SCRIPT AREA -->
+    <script src = "script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
 
 </body>
 </html>
