@@ -1,52 +1,204 @@
+*{
+    font-family: "Audiowide", sans-serif;
+}
 body {
+    position: relative;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f4f4f4;
+    background-color: #0a0a1a;
+    margin: 0;
+    flex-direction: column;
+    height: 100vh;
+    color: #fff;
+    
 }
+
+body::after {
+    content: "";
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 500px; /* Altura da imagem no rodapé */
+    background-image: url('images/fundo3.avif');
+    background-size: cover;
+    background-position: center bottom;
+    opacity: 0.2; /* Ajuste a transparência (0 a 1) */
+    -webkit-mask-image: linear-gradient(to top, #0a0a1a 20%, transparent 100%);
+    mask-image: linear-gradient(to top, #0a0a1a 20%, transparent 100%);
+    z-index: -1; /* Coloca atrás do conteúdo */
+}
+
+header {
+    position: absolute;
+    top: 0;     
+    left: 0;   
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+    height: 100px;
+}
+
+
+.titulo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 60px;
+    color: #00f7ff;
+    text-shadow: 0 0 10px #00f7ff;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin: 12px 0 12px 26px;
+}
+
+.imagem {
+    left: 0;
+    top: 0;
+    position: absolute;
+    margin-left: 15px; 
+    width: 10%;
+    height: auto;
+}
+
 #game {
-    border: 3px solid rgb(130, 0, 156);
+    z-index: 10;
+    border: 3px solid #82009c;
     display: grid;
-    grid-template-columns: 103px 103px 103px;
-    gap: 3px;
+    grid-template-columns: repeat(3,103px);
+    gap: 8px;
+    margin-top: 130px;
+    background-color: rgba(10, 10, 30, 0.8);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 
+        0 0 10px #4e00ff,
+        0 0 20px #4e00ff,
+        0 0 30px #4e00ff,
+        inset 0 0 10px #4e00ff;
+       
+    /* transform: perspective(600px) rotateX(10deg); */
 }
+
 .quadrado{
-    border: 2px solid rgb(167, 71, 154);
+
+    border: 2px solid #82009c;
+    border-radius: 5px;
     width: 100px;
     height: 100px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(20, 20, 50, 0.5);
     font-size: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    font-weight: bold;
+    border-radius: 5px;
+    box-shadow: 
+    0 0 5px rgba(78, 0, 255, 0.5),
+    inset 0 0 5px rgba(78, 0, 255, 0.3);
 }
+
+.quadrado:hover{
+    background-color: rgba(78, 0, 255, 0.2);
+    box-shadow: 
+        0 0 10px #4e00ff,
+        inset 0 0 10px #4e00ff;
+}
+
+.placar {
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    font-size: 1.2em;
+    opacity: 0.3;       
+}
+
 .botao {
     display: flex;
-    justify-content: center;
     align-items: flex-end;
-    height: 100vh;
-    padding-bottom: 50px;
+    justify-content: center;
+    padding-bottom: 50px;   
 }
+
+#reiniciar, #zerar-placar {
+    margin: 25px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    animation: pulsar 1s linear infinite;    /* aqui o animation que usa com o keyframes */
+    border-radius: 50px;
+    background: transparent;
+    border: 2px solid #00f7ff;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 5px #00f7ff;
+    box-shadow: 0 0 10px #00f7ff, inset 0 0 5px #00f7ff; 
+    color: #fff;
+}
+
+
 button:hover{
     scale: 104%;
-    background-color: pink;
+    background: rgba(0, 247, 255, 0.2);
+    box-shadow: 0 0 15px #00f7ff, inset 0 0 10px #00f7ff;
+    
 }
-button {
-padding: 10px 20px;
-cursor: pointer;
-font-size: 1rem;
-animation: identifier 1s linear infinite;    /* aqui o animation que usa com o keyframes */
-}
-
-
  /* aqui é uma animação para deixar o botao pulsando, usa ela com o animation da button */
-@keyframes identifier {     
+@keyframes pulsar {     
     from, to {
         scale: 100%;
     } 50% {
         scale: 106%;
     }
+}
+
+#mensagem {
+
+    animation: susto 1s linear infinite;
+    margin-top: 18px;
+    padding: 28px;
+    font-size: 50px;
+    text-align: center;
+    font-weight: 700;
+    text-shadow: 0 0 10px #fa0303;
+    letter-spacing: 1px;  
+    text-transform: uppercase;
+    
+}
+
+
+/* coloca foto no quadrado */
+.quadrado img {
+    max-width: 76%; /*largura maxima */ 
+    max-height: 76%; /* altura maxima */
+}
+
+
+/* Deixao o tabuleiro apagado quando a rodada acaba */
+
+.game.bloqueado{
+    opacity: 0.3;
+    pointer-events: none; /*impede cliques mesmo se esquecer no JS*/
+    transition: opacity 0.3s ease;
+}
+
+.efeitos-de-fundo{
+    background: url("./fundo3.avif");
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-position: center bottom;
+    opacity: 0.2; /* Ajuste a transparência (0 a 1) */
+    -webkit-mask-image: linear-gradient(to top, #0a0a1a 20%, transparent 100%);
+    mask-image: linear-gradient(to top, #0a0a1a 20%, transparent 100%);
+    animation: pulsar 9s linear infinite;
 }

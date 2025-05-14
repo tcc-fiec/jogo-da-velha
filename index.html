@@ -2,13 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>JogoDaVelha</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div></div>
-    <div id="game">
+
+
+    <div class="efeitos-de-fundo"></div>
+
+    <header>
+        <div>
+            <img class="imagem" src="https://images.sympla.com.br/5e5813d492494-xs.png" alt="imagem legal">
+        </div>    
+        
+        <div>
+            <h1 class="titulo">Jogo da Velha</h1>
+        </div>
+    </header>
+
+    <div id="game" class="game">
         <div class = "quadrado" data-index="0"></div>
         <div class = "quadrado" data-index="1"></div>
         <div class = "quadrado" data-index="2"></div>
@@ -19,13 +35,27 @@
         <div class = "quadrado" data-index="7"></div>
         <div class = "quadrado" data-index="8"></div>
     </div>
+
+  
+
+    <div id="resultado"></div> 
+    
+    <div class="placar">
+        <p>Vitórias X: <span id="contador-x">0</span></p>
+        <p>Vitórias O: <span id="contador-o">0</span></p>
+        <p>Empates: <span id="empates">0</span></p>
+    </div>
+
+    <div id="mensagem"></div>
     <div class = "botao">
         <button id="reiniciar">Reiniciar Jogo</button>
+        <button id="zerar-placar">Zerar Placar</button>
     </div>
-    <div id="resultado"></div>
-    <div id="mensagem"></div>
-    <script src = "script.js"></script>
 
+    <!-- SCRIPT AREA -->
+    <script src = "script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
 
 </body>
 </html>
