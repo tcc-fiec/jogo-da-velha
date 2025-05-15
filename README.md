@@ -38,6 +38,12 @@ Um projeto simples e interativo de **jogo da velha** (tic-tac-toe) desenvolvido 
 2. Abra o arquivo `index.html` no navegador.  
 3. Divirta-se jogando!
 
+## ♾️ Melhorias futuras
+
+- Adicionar a opção de jogar conta a máquina, usando IA
+- Implementar responsividade ao front-end
+- Criar um campo para inserir os nomes dos jogadores
+  
 ## 📄 Licença
 
 Este projeto está licenciado sob a [MIT License](LICENSE).
