@@ -6,6 +6,7 @@ Um projeto simples e interativo de **jogo da velha** (tic-tac-toe) desenvolvido 
 
 ![Screenshot do jogo](screenshot.png)  
 
+[Clique aqui para testar o jogo!](https://tcc-fiec.github.io/jogo-da-velha/)
 
 ## 🚀 Tecnologias Utilizadas
 
